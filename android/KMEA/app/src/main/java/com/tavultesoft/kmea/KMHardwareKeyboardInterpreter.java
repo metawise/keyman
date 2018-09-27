@@ -99,7 +99,12 @@ public class KMHardwareKeyboardInterpreter implements KeyEvent.Callback {
     0,      //        public static final int KEYCODE_PLUS = 81;
     0,      //        public static final int KEYCODE_MENU = 82;
     0,      //        public static final int KEYCODE_NOTIFICATION = 83;
-    0       //        public static final int KEYCODE_SEARCH = 84;
+    0,      //        public static final int KEYCODE_SEARCH = 84;
+    0,      //        public static final int KEYCODE_???= 85;
+    226     //        public static final int KEY_102ND = 86
+
+    // manually override Android from overloading KEY_102ND with KEYCODE_BACKSLASH
+    // See: https://source.android.com/devices/input/keyboard-devices
   };
 
   private final Context context;
@@ -113,7 +118,7 @@ public class KMHardwareKeyboardInterpreter implements KeyEvent.Callback {
   @Override
   public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-    if (keyCode > 84 || keyCode < 0) {
+    if (keyCode > 86 || keyCode < 0) {
       // The key is outside the range of keys we understand
       return false;
     }
